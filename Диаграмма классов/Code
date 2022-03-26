@@ -1,0 +1,29 @@
+@startuml
+
+class Robot {
+start()
+move()
+}
+
+class Engine{
+power : float 
+on()
+charge(power)
+}
+
+class Camera{
+detectGraf()
+transSignal()
+}
+
+class SprayGun{
+cleanGraf()
+}
+
+
+Robot o-- Camera : has
+Robot o-- SprayGun: has
+Robot o-- Engine: has
+
+
+@enduml
