@@ -1,8 +1,0 @@
-@startuml
-Robot -- Engine : > have
-Robot -- Camera: > have
-Robot -- SprayGun: > have
-Engine -- Robot : > start
-Camera -- Graffiti : > detect
-SprayGun -- Graffiti : > clean
-@enduml
