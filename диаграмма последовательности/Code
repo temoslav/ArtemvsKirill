@@ -1,0 +1,13 @@
+@startuml
+[*] --> Off
+Off --> On : Press ON
+On --> Off : Press OFF
+On --> Detect
+Detect --> Move : dirty = 0
+Detect --> Stop : dirty != 0
+Move --> Detect
+Stop --> Clean
+Clean --> Detect : dirty = 0 
+
+
+@enduml
