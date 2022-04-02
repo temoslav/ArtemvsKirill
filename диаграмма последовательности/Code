@@ -1,13 +1,24 @@
 @startuml
-[*] --> Off
-Off --> On : Press ON
-On --> Off : Press OFF
-On --> Detect
-Detect --> Move : dirty = 0
-Detect --> Stop : dirty != 0
-Move --> Detect
-Stop --> Clean
-Clean --> Detect : dirty = 0 
 
 
+[*] -> Off
+Off --> On : Включение системы
+On -> Off : Выключение системы
+On --> Detect : Начало работы камеры
+Detect -> Move : Грязь впереди 
+Detect --> TurnRight : Грязь слево
+Detect --> TurnLeft : Грязь справо
+TurnRight --> Move :Движение вперед к грязи
+TurnLeft --> Move : Движение вперед к грязи
+Move -> Stop : прибыл на место грязи
+Stop -> Clean : Включение пульверизатора
+Clean -> Detect : Обнаружение новой грязи
+
+
+Detect : Обаружение грязи
+Stop: Остановка движения
+TurnLeft : Поворто робата налево
+TurnRight : Поворто робата направо
+Move : Движение робота вперед
+Clean : Уборка
 @enduml
