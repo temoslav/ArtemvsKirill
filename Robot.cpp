@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 
 
@@ -20,17 +20,17 @@ enum RobotState {
     MOVE,
 };
 
-class Move{
+class Move {
 private:
     int distance_x;
     int distance_y;
     bool place = false;
 public:
     void moveRob(int* graf_x, int* graf_y, int* rob_x, int* rob_y) {
-       // distance_x = *rob_x + *graf_x;
-        //cout << distance_x;
-        //if (distance_x > 0)
-        while (place!= true) {
+        // distance_x = *rob_x + *graf_x;
+         //cout << distance_x;
+         //if (distance_x > 0)
+        while (place != true) {
             if (*graf_x == *rob_x || *graf_y == *rob_y) {
                 cout << "NA MESTE" << endl;
                 place = true;
@@ -45,17 +45,17 @@ public:
     void cleanGraf() {
         bool graf = true;
         if (graf) {
-            cout << "Sprey RABOTAET";
+            cout << "Sprey RABOTAET"<<endl;
         }
         else
-            cout << "VSE CHISTO";
-    
+            cout << "VSE CHISTO"<<endl;
+
     };
 };
 
 class Camera {
 public:
-    void detect(int*graf_x,  int* graf_y) {
+    void detect(int* graf_x, int* graf_y) {
         *graf_x = 20;
         *graf_y = 30;
     }
@@ -75,17 +75,17 @@ private:
     Move mv;
     Engine en;
     RobotState State;
-    int graf_x = 0 , graf_y = 0, rob_x = 20, rob_y = 30;
+    int graf_x = 0, graf_y = 0, rob_x = 20, rob_y = 30;
     bool graf;
 public:
 
-    void SetState (RobotState State) {
+    void SetState(RobotState State) {
         this->State = State;
     }
 
     void StartEndine() {
         en.on();
-        cout << "Rabotaet eng";
+        cout << "Rabotaet eng"<<endl;
     }
 
     void StopEngine() {
@@ -93,17 +93,17 @@ public:
     }
 
     void move() {
-        mv.moveRob(&graf_x,&graf_y, &rob_x, &rob_y);
-    
-   }
+        mv.moveRob(&graf_x, &graf_y, &rob_x, &rob_y);
+
+    }
     void spray() {
         gun.cleanGraf();
-    
+
     }
 
     void detect() {
         cm.detect(&graf_x, &graf_y);
-        cout << graf_x;
+        cout <<"KOORDINATI GRYAZI" << " x " << graf_x <<" y " <<  graf_y << endl;
     }
 
     void command() {
@@ -126,20 +126,20 @@ public:
             SetState(RobotState::CLEAN);
             break;
         };
-    
+
     }
-  
-   
+
+
     RobotState GetState() {
         while (State != OFF)
         {
-        command();
+            command();
             switch (State) {
             case RobotState::ON:
-                cout << "Rabotaet";
+                cout << "Rabotaet" << endl;
                 StartEndine();
                 break;
-
+                
             case RobotState::DETECT:
                 detect();
                 break;
@@ -150,6 +150,7 @@ public:
             case RobotState::CLEAN:
                 spray();
                 break;
+                
             }
         }
         switch (State) {
@@ -157,8 +158,8 @@ public:
             cout << "NE RABOTAET";
             StopEngine();
         }
-         return State;
-    }  
+        return State;
+    }
 };
 
 
